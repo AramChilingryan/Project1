@@ -1,5 +1,5 @@
 import React from 'react'
-import "./form.style.scss"
+import "./styles/form.style.scss"
 import {Formik} from "formik"
 import * as yup from "yup"
 
