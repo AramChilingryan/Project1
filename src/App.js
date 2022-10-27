@@ -1,21 +1,18 @@
 import React from 'react'
-import LoginComponent from "./components/LoginComponent"
 import Dashboard from './components/Dashboard'
-import {Routes, Route,Link} from "react-router-dom"
+import Login from './components/Login'
+import Navigation from './components/Navigation'
+import {Routes, Route} from 'react-router-dom'
 
 function App() {
   return (
     <div>
-        <nav>
-             <Link to= "/">Home </Link>
-             <Link to = "/login">Login </Link>
-        </nav>
+        <Navigation/>
         <Routes>
-            <Route  path='/'/>
-            <Route path='/login' element = { <LoginComponent />}/>
-            <Route path='/dashboard' element ={<Dashboard />}/>
+            <Route path='/'/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/dashboard' element={<Dashboard/>}/>
         </Routes>
-
     </div>
   )
 }
