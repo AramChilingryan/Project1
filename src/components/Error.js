@@ -3,7 +3,7 @@ import React from 'react'
 function Error(props) {
   return (
     <div>
-        <p>{props.text}</p>
+        <p className='error'>{props.text}</p>
     </div>
   )
 }
