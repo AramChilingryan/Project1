@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Error(props) {
+function Error({text}) {
   return (
     <div className='error'>
-        <p>{props.text}</p>
+      <p>{text}</p>
     </div>
   )
 }

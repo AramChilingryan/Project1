@@ -1,21 +1,16 @@
-input[type="email"],input[type="password"],input[type="submit"]{
-    width: 300px;
-    display: block;
-    padding: 12px;
-    border-radius: 15px;
-    margin: 0 auto;
-    margin-block: 8px;
-    background-color: rgba(242,242,242,255);
-    border: none;
-}
-input[type = "submit"] {
-    background-image: linear-gradient(to bottom right,#e66462,#e36286);
-    color: white;
-    cursor: pointer;
-    padding-top: 10px;
-}
-input[type="checkbox"] {
-    accent-color: rgba(221,97,140,255);
-    width: 10px;
-    height: 10px;
+.form-input {
+    input[type="email"],input[type="password"]{
+        width: 300px;
+        display: block;
+        padding: 12px;
+        border-radius: 15px;
+        margin: 0 auto;
+        margin-block: 8px;
+        background-color: rgba(242,242,242,255);
+        border: none;
+    }
+    label {
+        font-size: 10px;
+        font-weight: 700;
+    }
 }

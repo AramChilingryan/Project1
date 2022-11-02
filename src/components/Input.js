@@ -1,17 +1,17 @@
 import React from 'react'
 
-function Input(props) {
+function Input({id,text,type,placeholder,name,onChange,value}) {
   return (
-    <div>
-        <label htmlFor={props.id}>{props.text}</label>
-        <input 
-          type={props.type}
-          placeholder={props.placeholder}
-          name={props.name}
-          id={props.id}
-          onChange={props.onChange}
-          value={props.value}
-        />
+    <div className='form-input'>
+      <label htmlFor={id}>{text}</label>
+      <input 
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        id={id}
+        onChange={onChange}
+        value={value}
+      />
     </div>
   )
 }

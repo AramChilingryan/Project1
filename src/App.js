@@ -8,12 +8,12 @@ import './styles/main.scss'
 function App() {
   return (
     <div>
-        <Navigation/>
-        <Routes>
-            <Route path='/'/>
-            <Route path='/login' element={<Login/>}/>
-            <Route path='/dashboard' element={<Dashboard/>}/>
-        </Routes>
+      <Navigation/>
+      <Routes>
+        <Route path='/'/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
+      </Routes>
     </div>
   )
 }

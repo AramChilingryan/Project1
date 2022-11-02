@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Checkbox(props) {
+function Checkbox({name,id,text}) {
   return (
-    <div>
-        <input type="checkbox" name={props.name} id={props.id}/>
-        <label htmlFor={props.id}>{props.text}</label>
+    <div className='form-checkbox'>
+      <input type="checkbox" name={name} id={id}/>
+      <label htmlFor={id}>{text}</label>
     </div>
   )
 }

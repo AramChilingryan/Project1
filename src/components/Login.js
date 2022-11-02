@@ -39,7 +39,7 @@ function Login() {
                     </div>
                   </div>
                   <Input
-                    text="Username"
+                    text="USERNAME"
                     type="email"
                     placeholder="Username"
                     name="email"
@@ -47,10 +47,10 @@ function Login() {
                     onChange={handleChange}
                     value={values.email}
                   />
-                  <div style={{position:"absolute",top:"120px"}}><Error text={errors.email}/></div>
+                  <div className='error-user'><Error text={errors.email}/></div>
 
                   <Input
-                    text="Password"
+                    text="PASSWORD"
                     type="password"
                     placeholder="Password"
                     name="password"
@@ -58,19 +58,19 @@ function Login() {
                     onChange={handleChange}
                     value={values.password}
                   />
-                  <div style={{position:"absolute",top:"192px"}}><Error text={errors.password}/></div>
+                  <div className='error-password'><Error text={errors.password}/></div>
 
-                  <div style={{marginTop:"15px"}}><Input type="submit" value="Sign In"/></div>
+                  <Button text="Sign In" className="sign-in"/>
                   <div className='footer'> 
                     <Checkbox name="rem" id="rem" text="Remember Me"/>
                     <span>Forgot Password</span>
                   </div>
                 </form>
               </div>
-              <div className='box box1'>
+              <div className='box signUp-box'>
                  <h1>Welcome to login</h1>
                  <p>Don't have an accout?</p>
-                 <Button text="Sign Up"/>
+                 <Button text="Sign Up" className="sign-up"/>
               </div>
             </div>
           )
