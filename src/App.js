@@ -3,6 +3,7 @@ import Dashboard from './components/Dashboard'
 import Login from './components/Login'
 import Navigation from './components/Navigation'
 import {Routes, Route} from 'react-router-dom'
+import './styles/main.scss'
 
 function App() {
   return (

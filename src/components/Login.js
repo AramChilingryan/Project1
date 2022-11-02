@@ -1,13 +1,13 @@
 import React from 'react'
 import Error from './Error'
-import '../styles/form.style.scss'
 import {Formik} from "formik"
 import {useNavigate} from 'react-router-dom'
 import {loginSchema} from '../schemas/loginSchema.js'
 import {FaFacebookF} from "react-icons/fa"
 import {BsTwitter} from "react-icons/bs"
 import Input from './Input'
-
+import Checkbox from './Checkbox'
+import Button from './Button'
 
 function Login() {
   const navigate = useNavigate()
@@ -19,15 +19,14 @@ function Login() {
   return (
     <Formik 
       initialValues={{
-      email: "",
-      password: "",
-      repPassword: "",
+        email: "",
+        password: "",
       }}
       onSubmit={submitForm}
       validationSchema={loginSchema}
     >
       {
-        ({values,errors,handleSubmit,handleChange}) => {
+        ({values, errors, handleSubmit, handleChange}) => {
           return (
             <div className="container">
               <div className="box">
@@ -40,7 +39,6 @@ function Login() {
                     </div>
                   </div>
                   <Input
-                    htmlFor="email"
                     text="Username"
                     type="email"
                     placeholder="Username"
@@ -49,9 +47,9 @@ function Login() {
                     onChange={handleChange}
                     value={values.email}
                   />
-                  <Error text={errors.email}/>
+                  <div style={{position:"absolute",top:"120px"}}><Error text={errors.email}/></div>
+
                   <Input
-                    htmlFor="password"
                     text="Password"
                     type="password"
                     placeholder="Password"
@@ -60,25 +58,19 @@ function Login() {
                     onChange={handleChange}
                     value={values.password}
                   />
-                  <Error text={errors.password}/>
-                  <Input
-                    htmlFor="repPassword"
-                    text="Repeat Password"
-                    type="password"
-                    placeholder="Repeat Password"
-                    name="repPassword"
-                    id="repPassword"
-                    onChange={handleChange}
-                    value={values.repPassword}
-                  />
-                  <Error text={errors.repPassword}/>
-                  <Input type="submit" value="Sign In"/>
+                  <div style={{position:"absolute",top:"192px"}}><Error text={errors.password}/></div>
+
+                  <div style={{marginTop:"15px"}}><Input type="submit" value="Sign In"/></div>
                   <div className='footer'> 
-                    <input type="checkbox" name="rem" id="rem"/>
-                    <label htmlFor="rem">Remember Me</label>
+                    <Checkbox name="rem" id="rem" text="Remember Me"/>
                     <span>Forgot Password</span>
                   </div>
                 </form>
+              </div>
+              <div className='box box1'>
+                 <h1>Welcome to login</h1>
+                 <p>Don't have an accout?</p>
+                 <Button text="Sign Up"/>
               </div>
             </div>
           )
