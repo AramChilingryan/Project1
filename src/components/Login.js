@@ -60,7 +60,7 @@ function Login() {
                   />
                   <div className='error-password'><Error text={errors.password}/></div>
 
-                  <Button text="Sign In" className="sign-in"/>
+                  <Button text="Sign In" className="standart regulyar"/>
                   <div className='footer'> 
                     <Checkbox name="rem" id="rem" text="Remember Me"/>
                     <span>Forgot Password</span>
@@ -70,7 +70,7 @@ function Login() {
               <div className='box signUp-box'>
                  <h1>Welcome to login</h1>
                  <p>Don't have an accout?</p>
-                 <Button text="Sign Up" className="sign-up"/>
+                 <Button text="Sign Up" className="standart outline"/>
               </div>
             </div>
           )
