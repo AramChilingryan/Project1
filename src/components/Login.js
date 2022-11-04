@@ -8,6 +8,7 @@ import {BsTwitter} from "react-icons/bs"
 import Input from './Input'
 import Checkbox from './Checkbox'
 import Button from './Button'
+import classNames from 'classnames'
 
 function Login() {
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ function Login() {
                     onChange={handleChange}
                     value={values.email}
                   />
-                  <Error text={errors.email} className="error error-user"/>
+                  <Error text={errors.email} className={classNames("error", "error-user")}/>
 
                   <Input
                     text="PASSWORD"
@@ -58,9 +59,9 @@ function Login() {
                     onChange={handleChange}
                     value={values.password}
                   />
-                  <Error text={errors.password} className="error error-password"/>
+                  <Error text={errors.password} className={classNames("error", "error-password")}/>
 
-                  <Button text="Sign In" className="standard regular"/>
+                  <Button text="Sign In" className={classNames("standard", "regular")}/>
                   <div className='footer'> 
                     <Checkbox name="rem" id="rem" text="Remember Me"/>
                     <span>Forgot Password</span>
@@ -70,7 +71,7 @@ function Login() {
               <div className='box signUp-box'>
                  <h1>Welcome to login</h1>
                  <p>Don't have an accout?</p>
-                 <Button text="Sign Up" className="standard outline"/>
+                 <Button text="Sign Up" className={classNames("standard", "outline")}/>
               </div>
             </div>
           )
