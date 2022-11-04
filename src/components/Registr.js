@@ -1,0 +1,99 @@
+import React from 'react'
+import Error from './Error'
+import {Formik} from "formik"
+import { useNavigate } from 'react-router-dom'
+import {registrSchema} from '../schemas/registrSchema.js'
+import {FaFacebookF} from "react-icons/fa"
+import {BsTwitter} from "react-icons/bs"
+import Input from './Input'
+import Checkbox from './Checkbox'
+import Button from './Button'
+import classNames from 'classnames'
+
+function Registr() {
+    const signInNavigate = useNavigate()
+    function registrSubmit(values){
+        console.log(values)
+    }
+    function handleSignIn(){
+        signInNavigate("/login")
+    }
+
+  return (
+    <Formik 
+      initialValues={{
+        email: "",
+        password: "",
+        confirmPassword: ""
+      }}
+      onSubmit={registrSubmit}
+      validationSchema={registrSchema}
+    >
+        {
+            ({values, errors, handleSubmit, handleChange}) => {
+                console.log(errors)
+                return (
+                    <div className='container'>
+                      <div className='box'>
+                        <form autoComplete="off" onSubmit={handleSubmit}>
+                          <div className='header'>
+                            <span>Registration</span>
+                            <div className='icons'>
+                              <FaFacebookF/>
+                              <BsTwitter/>
+                             </div>
+                          </div>
+                          <Input
+                            text="USERNAME"
+                            type="email"
+                            placeholder="Username"
+                            name="email"
+                            id="email"
+                            onChange={handleChange}
+                            value={values.email}
+                           />
+                           <Error text={errors.email} className="error-user"/>
+
+                          <Input
+                            text="PASSWORD"
+                            type="password"
+                            placeholder="Password"
+                            name="password"
+                            id="password"
+                            onChange={handleChange}
+                            value={values.password}
+                           />
+                          <Error text={errors.password} className="error-password"/>
+
+                          <Input
+                            text="CONFIRM PASSWORD"
+                            type="password"
+                            placeholder="Confirm Password"
+                            name="confirmPassword"
+                            id="confirmPassword"
+                            onChange={handleChange}
+                            value={values.confirmPassword}
+                           />
+                          <Error text={errors.confirmPassword} className="error-password"/>
+
+                          <Button text="Submit" className={classNames("standard", "regular")}/>
+                          <div className='footer'> 
+                            <Checkbox name="rem" id="rem" text="Remember Me"/>
+                            <span>Forgot Password</span>
+                          </div>
+                        </form>
+                      </div>
+                      <div className='box signUp-box'>
+                        <h1>Welcome to registration </h1>
+                        <p>Don't have a login?</p>
+                        <Button text="Sign In" className={classNames("standard", "outline")} click={handleSignIn}/>
+                      </div>
+                    </div>  
+                )
+            }
+        }
+    </Formik>
+  )
+}
+
+export default Registr

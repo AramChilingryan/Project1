@@ -12,9 +12,14 @@ import classNames from 'classnames'
 
 function Login() {
   const navigate = useNavigate()
+  const registNavigate = useNavigate()
   function submitForm(values,action){
     console.log(values)
     navigate("/dashboard")
+  }
+
+  function handleRegistr(){
+    registNavigate("/registr")
   }
 
   return (
@@ -71,7 +76,7 @@ function Login() {
               <div className='box signUp-box'>
                  <h1>Welcome to login</h1>
                  <p>Don't have an accout?</p>
-                 <Button text="Sign Up" className={classNames("standard", "outline")}/>
+                 <Button text="Sign Up" className={classNames("standard", "outline")} click={handleRegistr} />
               </div>
             </div>
           )

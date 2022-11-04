@@ -1,9 +1,11 @@
 import React from 'react'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
+import Registr from './components/Registr'
 import Navigation from './components/Navigation'
 import {Routes, Route} from 'react-router-dom'
 import './styles/main.scss'
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
         <Route path='/'/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/registr' element={<Registr/>}/>
       </Routes>
     </div>
   )
