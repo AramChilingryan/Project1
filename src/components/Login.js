@@ -48,7 +48,7 @@ function Login() {
                     onChange={handleChange}
                     value={values.email}
                   />
-                  <Error text={errors.email} className={classNames("error", "error-user")}/>
+                  <Error text={errors.email} className="error-user"/>
 
                   <Input
                     text="PASSWORD"
@@ -59,7 +59,7 @@ function Login() {
                     onChange={handleChange}
                     value={values.password}
                   />
-                  <Error text={errors.password} className={classNames("error", "error-password")}/>
+                  <Error text={errors.password} className="error-password"/>
 
                   <Button text="Sign In" className={classNames("standard", "regular")}/>
                   <div className='footer'> 
