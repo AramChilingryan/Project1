@@ -47,7 +47,7 @@ function Login() {
                     onChange={handleChange}
                     value={values.email}
                   />
-                  <div className='error-user'><Error text={errors.email}/></div>
+                  <Error text={errors.email} className="error error-user"/>
 
                   <Input
                     text="PASSWORD"
@@ -58,9 +58,9 @@ function Login() {
                     onChange={handleChange}
                     value={values.password}
                   />
-                  <div className='error-password'><Error text={errors.password}/></div>
+                  <Error text={errors.password} className="error error-password"/>
 
-                  <Button text="Sign In" className="standart regulyar"/>
+                  <Button text="Sign In" className="standard regular"/>
                   <div className='footer'> 
                     <Checkbox name="rem" id="rem" text="Remember Me"/>
                     <span>Forgot Password</span>
@@ -70,7 +70,7 @@ function Login() {
               <div className='box signUp-box'>
                  <h1>Welcome to login</h1>
                  <p>Don't have an accout?</p>
-                 <Button text="Sign Up" className="standart outline"/>
+                 <Button text="Sign Up" className="standard outline"/>
               </div>
             </div>
           )
