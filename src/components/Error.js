@@ -1,9 +1,10 @@
 import React from 'react'
+import classNames from 'classnames'
 
-function Error(props) {
+function Error({text, className}) {
   return (
-    <div>
-        <p>{props.text}</p>
+    <div className={classNames("error",className)}>
+      <p>{text}</p>
     </div>
   )
 }
