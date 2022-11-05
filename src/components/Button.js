@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Button({text, className, click}) {
+function Button({text, className, onClick}) {
   return (
     <div>
-      <input type="submit" value={text} className={className} onClick={click}/>
+      <input type="submit" value={text} className={className} onClick={onClick}/>
     </div>
   )
 }

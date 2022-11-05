@@ -2,7 +2,7 @@ import React from 'react'
 import Error from './Error'
 import {Formik} from "formik"
 import {useNavigate} from 'react-router-dom'
-import {loginSchema} from '../schemas/loginSchema.js'
+import {registrSchema} from '../schemas/registrSchema.js'
 import {FaFacebookF} from "react-icons/fa"
 import {BsTwitter} from "react-icons/bs"
 import Input from './Input'
@@ -10,40 +10,38 @@ import Checkbox from './Checkbox'
 import Button from './Button'
 import classNames from 'classnames'
 
-function Login() {
-  const navigate = useNavigate()
-  const registNavigate = useNavigate()
-
-  function submitForm(values,action){
-    console.log(values)
-    navigate("/dashboard")
-  }
-  function handleRegister(){
-    registNavigate("/registr")
-  }
+function Register() {
+    const signInNavigate = useNavigate()
+    function registerSubmit(values){
+        console.log(values)
+    }
+    function handleSignIn(){
+        signInNavigate("/login")
+    }
 
   return (
     <Formik 
       initialValues={{
         email: "",
         password: "",
+        confirmPassword: ""
       }}
-      onSubmit={submitForm}
-      validationSchema={loginSchema}
+      onSubmit={registerSubmit}
+      validationSchema={registrSchema}
     >
       {
         ({values, errors, handleSubmit, handleChange}) => {
-          return (
-            <div className="container">
+          return(
+            <div className='container'>
               <div className='wraper'>
                 <div className="box">
-                  <form autoComplete="off" onSubmit={handleSubmit}>
+                  <form autoComplete="off" onSubmit={handleSubmit} className="register-form">
                     <div className='header'>
-                      <span>Sign In</span>
+                      <span>Registration</span>
                       <div className='icons'>
                         <FaFacebookF/>
                         <BsTwitter/>
-                      </div>
+                       </div>
                     </div>
                     <Input
                       text="USERNAME"
@@ -53,8 +51,8 @@ function Login() {
                       id="email"
                       onChange={handleChange}
                       value={values.email}
-                    />
-                    <Error text={errors.email} className="error-user"/>
+                     />
+                     <Error text={errors.email} className="error-user"/>
 
                     <Input
                       text="PASSWORD"
@@ -64,10 +62,21 @@ function Login() {
                       id="password"
                       onChange={handleChange}
                       value={values.password}
-                    />
+                     />
                     <Error text={errors.password} className="error-password"/>
 
-                    <Button text="Sign In" className={classNames("standard", "regular")}/>
+                    <Input
+                      text="CONFIRM PASSWORD"
+                      type="password"
+                      placeholder="Confirm Password"
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      onChange={handleChange}
+                      value={values.confirmPassword}
+                     />
+                    <Error text={errors.confirmPassword} className="error-password"/>
+
+                    <Button text="Submit" className={classNames("standard", "regular")}/>
                     <div className='footer'> 
                       <Checkbox name="rem" id="rem" text="Remember Me"/>
                       <span>Forgot Password</span>
@@ -75,12 +84,12 @@ function Login() {
                   </form>
                 </div>
                 <div className='welcome-box'>
-                  <h1>Welcome to login</h1>
-                  <p>Don't have an accout?</p>
-                  <Button text="Sign Up" className={classNames("standard", "outline")} onClick={handleRegister} />
+                  <h1>Welcome to registration </h1>
+                  <p>Don't have a login?</p>
+                  <Button text="Sign In" className={classNames("standard", "outline")} onClick={handleSignIn}/>
                 </div>
               </div>
-            </div>
+            </div>  
           )
         }
       }
@@ -88,4 +97,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register
