@@ -17,6 +17,15 @@ function Login() {
   function submitForm(values,action){
     console.log(values)
     navigate("/dashboard")
+    fetch("http://localhost:5000/login",{
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify(values)
+    })
+    .then(res => res.text())
+    .then(data => console.log(data))
+    
+    
   }
   function handleRegister(){
     registNavigate("/registr")
