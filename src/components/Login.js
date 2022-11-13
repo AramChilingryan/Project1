@@ -13,28 +13,29 @@ import classNames from 'classnames'
 function Login() {
   const navigate = useNavigate()
   const registNavigate = useNavigate()
-
   function submitForm(values,action){
-    console.log(values)
-    navigate("/dashboard")
-    fetch("http://localhost:5000/login",{
+    fetch("http://localhost:3005/login",{
+      headers: {
+        'Content-Type': 'application/json'
+        },
       method: "POST",
-      mode: "no-cors",
       body: JSON.stringify(values)
     })
-    .then(res => res.text())
-    .then(data => console.log(data))
-    
+    .then(res => res.json())
+    .then((data) => {
+      localStorage.setItem("key",data.token)
+      if(localStorage.getItem("key") !== "undefined") navigate("/dashboard")
+    })
     
   }
   function handleRegister(){
-    registNavigate("/registr")
+    registNavigate("/register")
   }
 
   return (
     <Formik 
       initialValues={{
-        email: "",
+        username: "",
         password: "",
       }}
       onSubmit={submitForm}
@@ -58,10 +59,10 @@ function Login() {
                       text="USERNAME"
                       type="email"
                       placeholder="Username"
-                      name="email"
+                      name="username"
                       id="email"
                       onChange={handleChange}
-                      value={values.email}
+                      value={values.username}
                     />
                     <Error text={errors.email} className="error-user"/>
 

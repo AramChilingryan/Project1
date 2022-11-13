@@ -22,7 +22,7 @@ function Register() {
   return (
     <Formik 
       initialValues={{
-        email: "",
+        username: "",
         password: "",
         confirmPassword: ""
       }}
@@ -47,7 +47,7 @@ function Register() {
                       text="USERNAME"
                       type="email"
                       placeholder="Username"
-                      name="email"
+                      name="username"
                       id="email"
                       onChange={handleChange}
                       value={values.email}
