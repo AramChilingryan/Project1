@@ -11,16 +11,16 @@ import Button from './Button'
 import classNames from 'classnames'
 
 function Register() {
-    const signInNavigate = useNavigate()
-    function registerSubmit(values){
-        console.log(values)
-    }
-    function handleSignIn(){
-        signInNavigate("/login")
-    }
+  const signInNavigate = useNavigate()
+  function registerSubmit(values){
+    console.log(values)
+  }
+  function handleSignIn() {
+    signInNavigate("/")
+  }
 
   return (
-    <Formik 
+    <Formik
       initialValues={{
         username: "",
         password: "",
@@ -51,8 +51,8 @@ function Register() {
                       id="email"
                       onChange={handleChange}
                       value={values.email}
-                     />
-                     <Error text={errors.email} className="error-user"/>
+                      />
+                    <Error text={errors.username} className="error-user"/>
 
                     <Input
                       text="PASSWORD"
@@ -62,7 +62,7 @@ function Register() {
                       id="password"
                       onChange={handleChange}
                       value={values.password}
-                     />
+                      />
                     <Error text={errors.password} className="error-password"/>
 
                     <Input
@@ -73,11 +73,11 @@ function Register() {
                       id="confirmPassword"
                       onChange={handleChange}
                       value={values.confirmPassword}
-                     />
+                      />
                     <Error text={errors.confirmPassword} className="error-password"/>
 
                     <Button text="Submit" className={classNames("standard", "regular")}/>
-                    <div className='footer'> 
+                    <div className='footer'>
                       <Checkbox name="rem" id="rem" text="Remember Me"/>
                       <span>Forgot Password</span>
                     </div>
@@ -89,7 +89,7 @@ function Register() {
                   <Button text="Sign In" className={classNames("standard", "outline")} onClick={handleSignIn}/>
                 </div>
               </div>
-            </div>  
+            </div>
           )
         }
       }

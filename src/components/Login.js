@@ -12,28 +12,32 @@ import classNames from 'classnames'
 
 function Login() {
   const navigate = useNavigate()
-  const registNavigate = useNavigate()
+
+  React.useEffect(()=> {
+    console.log( localStorage.getItem("AUTH_TOKEN"))
+    if(localStorage.getItem("AUTH_TOKEN") !== null && localStorage.getItem("AUTH_TOKEN") !== "undefined" ) {
+      navigate("/")
+    } else navigate("/login")
+  },[navigate])
   function submitForm(values,action){
     fetch("http://localhost:3005/login",{
       headers: {
         'Content-Type': 'application/json'
-        },
+      },
       method: "POST",
       body: JSON.stringify(values)
     })
     .then(res => res.json())
     .then((data) => {
-      localStorage.setItem("key",data.token)
-      if(localStorage.getItem("key") !== "undefined") navigate("/dashboard")
+      localStorage.setItem("AUTH_TOKEN", data.token)
     })
-    
   }
   function handleRegister(){
-    registNavigate("/register")
+    navigate("/register")
   }
 
   return (
-    <Formik 
+    <Formik
       initialValues={{
         username: "",
         password: "",
@@ -64,7 +68,7 @@ function Login() {
                       onChange={handleChange}
                       value={values.username}
                     />
-                    <Error text={errors.email} className="error-user"/>
+                    <Error text={errors.username} className="error-user"/>
 
                     <Input
                       text="PASSWORD"
@@ -78,7 +82,7 @@ function Login() {
                     <Error text={errors.password} className="error-password"/>
 
                     <Button text="Sign In" className={classNames("standard", "regular")}/>
-                    <div className='footer'> 
+                    <div className='footer'>
                       <Checkbox name="rem" id="rem" text="Remember Me"/>
                       <span>Forgot Password</span>
                     </div>
