@@ -1,24 +1,24 @@
 import React from 'react'
 import Error from './Error'
-import {Formik} from "formik"
-import {useNavigate} from 'react-router-dom'
-import {loginSchema} from '../schemas/loginSchema.js'
-import {FaFacebookF} from "react-icons/fa"
-import {BsTwitter} from "react-icons/bs"
+import { Formik } from "formik"
+import { useNavigate } from 'react-router-dom'
+import { loginSchema } from '../schemas/loginSchema.js'
+import { FaFacebookF } from "react-icons/fa"
+import { BsTwitter } from "react-icons/bs"
 import Input from './Input'
 import Checkbox from './Checkbox'
 import Button from './Button'
 import classNames from 'classnames'
+import { AUTH_TOKEN } from '../constants/token'
 
 function Login() {
   const navigate = useNavigate()
 
-  React.useEffect(()=> {
-    console.log( localStorage.getItem("AUTH_TOKEN"))
-    if(localStorage.getItem("AUTH_TOKEN") !== null && localStorage.getItem("AUTH_TOKEN") !== "undefined" ) {
-      navigate("/")
-    } else navigate("/login")
-  },[navigate])
+  // React.useEffect(()=> {
+  //   if(localStorage.getItem("AUTH_TOKEN") !== null && localStorage.getItem("AUTH_TOKEN") !== "undefined" ) {
+  //     navigate("/dashboard")
+  //   } else navigate("/login")
+  // }, [navigate])
   function submitForm(values,action){
     fetch("http://localhost:3005/login",{
       headers: {
@@ -29,7 +29,7 @@ function Login() {
     })
     .then(res => res.json())
     .then((data) => {
-      localStorage.setItem("AUTH_TOKEN", data.token)
+      localStorage.setItem(AUTH_TOKEN, data.token)
     })
   }
   function handleRegister(){
