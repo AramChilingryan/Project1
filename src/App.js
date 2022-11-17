@@ -1,18 +1,21 @@
 import React from 'react'
 import Dashboard from './components/Dashboard'
 import Login from './components/Login'
-import Navigation from './components/Navigation'
+import Register from './components/Register'
 import {Routes, Route} from 'react-router-dom'
 import './styles/main.scss'
+import PrivateRouter from './utils/PrivateRouter'
 
 function App() {
   return (
     <div>
-      <Navigation/>
       <Routes>
-        <Route path='/'/>
+        <Route element={<PrivateRouter/>}>
+          <Route path='/' exact/>
+          <Route path='/dashboard' element={<Dashboard/>} />
+        </Route>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/register' element={<Register/>}/>
       </Routes>
     </div>
   )
