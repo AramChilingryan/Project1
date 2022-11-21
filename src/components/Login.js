@@ -14,11 +14,13 @@ import { AUTH_TOKEN } from '../constants/token'
 function Login() {
   const navigate = useNavigate()
 
-  // React.useEffect(()=> {
-  //   if(localStorage.getItem("AUTH_TOKEN") !== null && localStorage.getItem("AUTH_TOKEN") !== "undefined" ) {
-  //     navigate("/dashboard")
-  //   } else navigate("/login")
-  // }, [navigate])
+  React.useEffect(()=> {
+    if(localStorage.getItem(AUTH_TOKEN) !== null &&
+    localStorage.getItem(AUTH_TOKEN) !== "undefined" ) {
+      navigate("/dashboard")
+    } else navigate("/login")
+  }, [navigate])
+
   function submitForm(values,action){
     fetch("http://localhost:3005/login",{
       headers: {
@@ -30,6 +32,7 @@ function Login() {
     .then(res => res.json())
     .then((data) => {
       localStorage.setItem(AUTH_TOKEN, data.token)
+      navigate("/dashboard")
     })
   }
   function handleRegister(){
